@@ -15,6 +15,9 @@
 
     <p>You want to be treat as a {{ formOfTreatment }} </p>
     <shopping-cart></shopping-cart>
+    <router-link to="/about/dragons">Dragons</router-link> |
+    <router-link to="/about/goblins">Goblins</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
