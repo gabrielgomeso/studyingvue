@@ -22,6 +22,7 @@
 
       <button type="submit">Enviar</button>
     </form>
+    <button @click="goBack">Voltar</button>
     <shopping-cart></shopping-cart>
     <router-link to="/about/dragons">Dragons</router-link> |
     <router-link to="/about/goblins">Goblins</router-link>
@@ -43,8 +44,11 @@ export default {
   methods: {
     sendForm() {
       this.$store.dispatch('cart/setItemToCart', { shoppingCartContent: this.shopItem });
-      this.$router.push('checkout')
+      this.$router.push('checkout');
     },
+    goBack() {
+      this.$router.go(-1);
+    }
   },
   computed: {
     ...mapGetters([
