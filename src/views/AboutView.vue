@@ -2,18 +2,26 @@
   <div class="about">
     <h1>This is an about page</h1>
     <form
+      class="form"
       @submit.prevent="sendForm"
     > 
-      <label for="treatment">How you want to be treated?</label>
-      <input type="text" v-model="formOfTreatment" name="treatment" id="treatment">
+      <div class="input-block">
+        <label for="treatment">How you want to be treated?</label>
+        <input type="text" v-model="formOfTreatment" name="treatment" id="treatment">
+      </div>
 
-      <label for="shopItem">What do you want to buy?</label>
-      <input type="text" v-model="shopItem" name="shopItem" id="shopItem">
+      <div class="input-block">
+        <label for="treatment">Tell us your name:</label>
+        <input type="text" v-model="username" name="name" id="name">
+      </div>
+
+      <div class="input-block">
+        <label for="shopItem">What do you want to buy?</label>
+        <input type="text" v-model="shopItem" name="shopItem" id="shopItem">
+      </div>
 
       <button type="submit">Enviar</button>
     </form>
-
-    <p>You want to be treat as a {{ formOfTreatment }} </p>
     <shopping-cart></shopping-cart>
     <router-link to="/about/dragons">Dragons</router-link> |
     <router-link to="/about/goblins">Goblins</router-link>
@@ -34,8 +42,8 @@ export default {
   },
   methods: {
     sendForm() {
-      this.$store.dispatch('setTreatment', { treatment: this.treatment });
       this.$store.dispatch('cart/setItemToCart', { shoppingCartContent: this.shopItem });
+      this.$router.push('checkout')
     },
   },
   computed: {
@@ -50,8 +58,32 @@ export default {
         this.$store.dispatch('setTreatment', { treatment: value })
       }
     },
+    username: {
+      get () {
+        return this.$store.state.name
+      },
+      set (value) {
+        this.$store.dispatch('setName', { name: value })
+      }
+    },
   },
 }
 
 
 </script>
+
+<style lang="scss" scoped>
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  max-width: 40em;
+
+  .input-block {
+    padding: 15px;
+  }
+}
+
+</style>
