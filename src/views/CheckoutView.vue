@@ -15,7 +15,7 @@ export default {
   components: {
     ShoppingCart
   },
-    computed: {
+  computed: {
     ...mapGetters([
       'formOfTreatment',
       'name',

@@ -11,6 +11,28 @@ export default new Vuex.Store({
   state: {
     treatment: '',
     name: '',
+    products: [
+      {
+        id: 1,
+        name: 'Apple',
+        value: 10  
+      },
+      {
+        id: 2,
+        name: 'Orange',
+        value: 15
+      },
+      {
+        id: 3,
+        name: 'Banana',
+        value: 20
+      },
+      {
+        id: 4,
+        name: 'Broken Sword',
+        value: 50
+      },
+    ],
   },
   getters: {
     formOfTreatment: state => {
@@ -18,6 +40,9 @@ export default new Vuex.Store({
     },
     name: state => {
       return state.name;
+    },
+    products: state => {
+      return state.products;
     }
   },
   mutations: {
