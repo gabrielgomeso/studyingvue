@@ -1,13 +1,32 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/products">Products</router-link>
-    </nav>
+    <the-header></the-header>
     <router-view/>
+    <the-banner></the-banner>
+    <the-body></the-body>
+    <subscription-form></subscription-form>
+    <the-footer></the-footer>
   </div>
 </template>
+
+<script>
+import TheHeader from './components/TheHeader.vue';
+import TheBanner from './components/TheBanner.vue';
+import TheBody from './components/TheBody.vue';
+import TheFooter from './components/TheFooter.vue';
+import SubscriptionForm from './components/SubscriptionForm.vue';
+
+
+export default {
+  components: {
+    TheHeader,
+    TheBanner,
+    TheBody,
+    SubscriptionForm,
+    TheFooter,
+  },
+}
+</script>
 
 <style lang="scss">
 #app {
